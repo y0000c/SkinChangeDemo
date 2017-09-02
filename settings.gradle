@@ -1,1 +1,1 @@
-include ':app', ':skinpluginres'
+include ':app', ':skinpluginres', ':skinplugingreen'

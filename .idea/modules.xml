@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SkinChangeDemo.iml" filepath="$PROJECT_DIR$/SkinChangeDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/skinplugingreen/skinplugingreen.iml" filepath="$PROJECT_DIR$/skinplugingreen/skinplugingreen.iml" />
       <module fileurl="file://$PROJECT_DIR$/skinpluginres/skinpluginres.iml" filepath="$PROJECT_DIR$/skinpluginres/skinpluginres.iml" />
     </modules>
   </component>

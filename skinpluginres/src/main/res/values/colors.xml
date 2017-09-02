@@ -5,9 +5,5 @@
     <color name="colorAccent">#FF4081</color>
 
 
-    <color name="skin_100_green">#6bca79</color>
-    <color name="skin_120_green">#60ab6b</color>
-
-    <color name="skin_100_red">#e73333</color>
-    <color name="skin_120_red">#c62d2d</color>
+    <color name="skin_text">#c62d2d</color>
 </resources>

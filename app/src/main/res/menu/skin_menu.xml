@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="skinRed"
+        android:id="@+id/skin_red"/>
+    <item
+        android:title="skinGreen"
+        android:id="@+id/skin_green"/>
+    <item
+        android:title="恢复默认"
+        android:id="@+id/skin_reset"/>
+
+</menu>

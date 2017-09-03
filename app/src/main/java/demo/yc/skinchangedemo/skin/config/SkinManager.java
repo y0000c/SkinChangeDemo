@@ -60,7 +60,7 @@ public class SkinManager
 
     public void init(Context context)
     {
-        mContext = context.getApplicationContext();
+        mContext = context;
     }
 
     private void loadPlugin(String apkPath,String packName) throws Exception
@@ -124,10 +124,14 @@ public class SkinManager
     {
         if(callback == null)
         {
+            Log.w("call","call is null");
             callback = ISkinChangingCallback.DEFAULT_CALLBACK;
-        }
 
+        }
+        Log.w("call","call is not null");
         final ISkinChangingCallback call = callback;
+
+
         new AsyncTask<Void,Void,Void>()
         {
             @Override
@@ -144,6 +148,7 @@ public class SkinManager
                     loadPlugin(apkPath,packName);
                 } catch (Exception e)
                 {
+                    e.printStackTrace();
                     call.onError(e);
                 }
                 return null;
@@ -167,8 +172,10 @@ public class SkinManager
     private void notifyAllListener()
     {
         Log.w("plugin","需要更新的界面有几个"+listenerList.size());
-        for(ISkinChangeListener listener :listenerList)
+        for(int i=0,n=listenerList.size();i<n;i++)
         {
+            ISkinChangeListener listener = listenerList.get(n-i-1);
+            Log.w("plugin","准备更新  --->  "+listener.toString());
             skinChange(listener);
             listener.onSkinChange();
         }
@@ -177,10 +184,18 @@ public class SkinManager
     public void skinChange(ISkinChangeListener listener)
     {
         List<SkinView> skinViews = mSkinViewMaps.get(listener);
-        for(SkinView view: skinViews)
+        if(mSkinViewMaps.get(listener) != null)
         {
-            view.apply();
+            Log.w("plugin",listener.toString()+"更新view的个数"+skinViews.size());
+            for(SkinView view: skinViews)
+            {
+                view.apply();
+            }
+        }else
+        {
+            Log.w("plugin",listener.toString()+"---views is null");
         }
+
     }
 
     public boolean isNeedLoadPlugin()
@@ -190,7 +205,6 @@ public class SkinManager
 
         if(TextUtils.isEmpty(mPackName))
             return false;
-
         return true;
     }
 }

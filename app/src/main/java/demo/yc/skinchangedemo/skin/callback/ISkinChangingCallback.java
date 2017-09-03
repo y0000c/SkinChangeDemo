@@ -17,9 +17,8 @@ public interface ISkinChangingCallback
 
     public static DefaultCallback DEFAULT_CALLBACK = new DefaultCallback();
 
-    public class DefaultCallback implements ISkinChangingCallback
+    class DefaultCallback implements ISkinChangingCallback
     {
-
         @Override
         public void onStart()
         {

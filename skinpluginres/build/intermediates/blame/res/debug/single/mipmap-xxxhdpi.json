@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\androidProject\\myproject\\SkinChangeDemo\\skinpluginres\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_launcher_round.png",
+        "source": "C:\\Users\\Administrator\\Desktop\\androidProject\\myproject\\SkinChangeDemo\\skinpluginres\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\androidProject\\myproject\\SkinChangeDemo\\skinpluginres\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_launcher.png",
+        "source": "C:\\Users\\Administrator\\Desktop\\androidProject\\myproject\\SkinChangeDemo\\skinpluginres\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    }
+]

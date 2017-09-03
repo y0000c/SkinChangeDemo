@@ -1,8 +1,12 @@
 package demo.yc.skinchangedemo;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.LayoutInflaterCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
@@ -48,9 +52,9 @@ public class BaseSkinActivity extends AppCompatActivity implements ISkinChangeLi
     public void onCreate(@Nullable Bundle savedInstanceState)
     {
         SkinManager.getInstance().registerSkinListener(this);
-
         LayoutInflater inflater = (LayoutInflater)
                 getSystemService(LAYOUT_INFLATER_SERVICE);
+        Log.w("skin","================="+this.getClass().getSimpleName()+"======================");
         LayoutInflaterCompat.setFactory2(inflater, new LayoutInflater.Factory2()
         {
 
@@ -63,6 +67,7 @@ public class BaseSkinActivity extends AppCompatActivity implements ISkinChangeLi
             @Override
             public View onCreateView(View parent, String name, Context context, AttributeSet attrs)
             {
+
                 AppCompatDelegate delegate = getDelegate();
                 List<SkinAttr> attrList = null;
                 View view = null;
@@ -80,11 +85,6 @@ public class BaseSkinActivity extends AppCompatActivity implements ISkinChangeLi
                 } catch (Exception e)
                 {
                     e.printStackTrace();
-                }
-
-                for(int i=0,n=attrs.getAttributeCount();i<n;i++)
-                {
-                    Log.w("skin",attrs.getAttributeName(i)+"+++++++++++++++++"+attrs.getAttributeValue(i)+"---");
                 }
 
                 attrList = SkinAttrSupport.getSkinAttrs(attrs,context);
@@ -108,15 +108,26 @@ public class BaseSkinActivity extends AppCompatActivity implements ISkinChangeLi
                 return view;
             }
         });
+
         super.onCreate(savedInstanceState);
+
+        if(ContextCompat.checkSelfPermission
+                (this,android.Manifest.permission.READ_EXTERNAL_STORAGE)
+            != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}
+                    ,100);
+        }
+
+
+
+
     }
 
     private void injectSkin(View view, List<SkinAttr> attrList)
     {
-        for(SkinAttr attr:attrList)
-        {
-            Log.w("attr",attr.getResName()+" is "+attr.getResType());
-        }
+
         List<SkinView> skinViews = SkinManager.getInstance().getSkinViews(this);
         if(skinViews == null)
         {
@@ -124,7 +135,7 @@ public class BaseSkinActivity extends AppCompatActivity implements ISkinChangeLi
             SkinManager.getInstance().addSkinViews(this,skinViews);
         }
         skinViews.add(new SkinView(view,attrList));
-
+        Log.w("plugin",this.getClass().getSimpleName()+"is add views");
 
         //判断当前是否需要马上换肤
         if(SkinManager.getInstance().isNeedLoadPlugin())
@@ -132,6 +143,13 @@ public class BaseSkinActivity extends AppCompatActivity implements ISkinChangeLi
 
     }
 
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        Log.w("skin",this.getClass().getSimpleName()+"=================start===============");
+
+    }
 
     private View createViewFromTag(String name, Context context, AttributeSet attrs)
     {
@@ -194,9 +212,7 @@ public class BaseSkinActivity extends AppCompatActivity implements ISkinChangeLi
     @Override
     public void onSkinChange()
     {
-
     }
-
 
 
     @Override

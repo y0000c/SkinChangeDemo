@@ -10,18 +10,15 @@ import android.view.ViewGroup;
 
 import demo.yc.skinchangedemo.R;
 import demo.yc.skinchangedemo.skin.callback.ISkinChangeListener;
-import demo.yc.skinchangedemo.skin.config.SkinManager;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class OneFragment extends Fragment implements ISkinChangeListener
 {
-
-
     public OneFragment()
     {
-        // Required empty public constructor
+
     }
 
 
@@ -29,7 +26,7 @@ public class OneFragment extends Fragment implements ISkinChangeListener
     public void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        SkinManager.getInstance().registerSkinListener(this);
+      //  SkinManager.getInstance().registerSkinListener(this);
     }
 
     @Override
@@ -37,14 +34,17 @@ public class OneFragment extends Fragment implements ISkinChangeListener
                              Bundle savedInstanceState)
     {
 
+//        if(SkinManager.getInstance().isNeedLoadPlugin())
+//            SkinManager.getInstance().skinChange(this);
+
         return inflater.inflate(R.layout.fragment_one,container,false);
     }
 
     @Override
     public void onDestroyView()
     {
+       // SkinManager.getInstance().unregisterSkinListener(this);
         super.onDestroyView();
-        SkinManager.getInstance().unregisterSkinListener(this);
     }
 
     @Override

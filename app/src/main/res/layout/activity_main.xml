@@ -8,12 +8,7 @@
     android:orientation="vertical"
     tools:context="demo.yc.skinchangedemo.ui.activity.MainActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/action_bar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/skin_text"
-        yc:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
 
     <TextView
         android:id="@+id/title"

@@ -6,6 +6,7 @@ import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.text.TextUtils;
 import android.util.Log;
 
 import java.lang.reflect.Method;
@@ -93,20 +94,19 @@ public class SkinManager
     public ColorStateList getColorBySkinPlugin(String name)
     {
         Log.w("get","color-----------------"+name);
-        return resources.getColorStateList
-                (resources.getIdentifier(name,"color",mPackName));
+        return resources.getColorStateList(
+                resources.getIdentifier(name,"color",mPackName));
     }
-
 
     public List<SkinView> getSkinViews(ISkinChangeListener listener)
     {
         return mSkinViewMaps.get(listener);
     }
+
     public void addSkinViews(ISkinChangeListener listener,List<SkinView> views)
     {
         mSkinViewMaps.put(listener,views);
     }
-
 
     public void registerSkinListener(ISkinChangeListener listener)
     {
@@ -162,11 +162,11 @@ public class SkinManager
                 }
             }
         }.execute();
-
     }
 
     private void notifyAllListener()
     {
+        Log.w("plugin","需要更新的界面有几个"+listenerList.size());
         for(ISkinChangeListener listener :listenerList)
         {
             skinChange(listener);
@@ -174,13 +174,23 @@ public class SkinManager
         }
     }
 
-    private void skinChange(ISkinChangeListener listener)
+    public void skinChange(ISkinChangeListener listener)
     {
         List<SkinView> skinViews = mSkinViewMaps.get(listener);
         for(SkinView view: skinViews)
         {
             view.apply();
         }
+    }
 
+    public boolean isNeedLoadPlugin()
+    {
+        if(TextUtils.isEmpty(mApkPath))
+            return false;
+
+        if(TextUtils.isEmpty(mPackName))
+            return false;
+
+        return true;
     }
 }

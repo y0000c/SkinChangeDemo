@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:yc="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="demo.yc.skinchangedemo.MainActivity">
+    tools:context="demo.yc.skinchangedemo.ui.activity.MainActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/skin_navig"
+        yc:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <TextView
         android:id="@+id/title"

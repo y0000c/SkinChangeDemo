@@ -108,9 +108,7 @@ public class BaseSkinActivity extends AppCompatActivity implements ISkinChangeLi
                 return view;
             }
         });
-
         super.onCreate(savedInstanceState);
-
     }
 
     private void injectSkin(View view, List<SkinAttr> attrList)
@@ -129,6 +127,8 @@ public class BaseSkinActivity extends AppCompatActivity implements ISkinChangeLi
 
 
         //判断当前是否需要马上换肤
+        if(SkinManager.getInstance().isNeedLoadPlugin())
+            SkinManager.getInstance().skinChange(this);
 
     }
 
@@ -196,6 +196,7 @@ public class BaseSkinActivity extends AppCompatActivity implements ISkinChangeLi
     {
 
     }
+
 
 
     @Override

@@ -11,8 +11,8 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/action_bar"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/skin_navig"
+        android:layout_height="50dp"
+        android:background="@color/skin_text"
         yc:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <TextView
@@ -27,7 +27,12 @@
     <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="200dp"
         android:background="@drawable/skin_navig"/>
 
+    <FrameLayout
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/frame_layout"/>
 </LinearLayout>

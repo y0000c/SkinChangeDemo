@@ -2,6 +2,7 @@ package demo.yc.skinchangedemo.skin.attr;
 
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,15 +22,28 @@ public enum SkinAttrType
         @Override
         public void apply(View view, String mResName)
         {
-            Drawable draw = SkinManager.getInstance().getDrawableBySkinPlugin(mResName);
-            if(draw != null)
-                view.setBackground(draw);
+            if(view instanceof Toolbar)
+            {
+                ColorStateList list = SkinManager.getInstance().getColorBySkinPlugin(mResName);
+                if(list != null)
+                    view.setBackgroundColor(list.getDefaultColor());
+            }
+            else
+            {
+                Drawable draw = SkinManager.getInstance().getDrawableBySkinPlugin(mResName);
+                if(draw != null)
+                    view.setBackground(draw);
+            }
+
+
+
         }
     },
     SRC("src"){
         @Override
         public void apply(View view, String mResName)
         {
+
             Drawable draw = SkinManager.getInstance().getDrawableBySkinPlugin(mResName);
             if(draw != null)
                 if(view instanceof ImageView)

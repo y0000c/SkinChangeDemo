@@ -15,6 +15,7 @@ import demo.yc.skinchangedemo.R;
 import demo.yc.skinchangedemo.skin.callback.ISkinChangingCallback;
 import demo.yc.skinchangedemo.skin.config.Const;
 import demo.yc.skinchangedemo.skin.config.SkinManager;
+import demo.yc.skinchangedemo.ui.fragment.OneFragment;
 
 
 public class MainActivity extends BaseSkinActivity
@@ -43,6 +44,9 @@ public class MainActivity extends BaseSkinActivity
                 startActivity(intent);
             }
         });
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frame_layout,new OneFragment()).commit();
     }
 
     @Override

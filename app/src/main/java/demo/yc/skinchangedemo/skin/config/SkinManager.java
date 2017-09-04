@@ -199,12 +199,12 @@ public class SkinManager
     }
 
     public boolean isNeedLoadPlugin()
-    {
-        if(TextUtils.isEmpty(mApkPath))
-            return false;
+{
+    if(TextUtils.isEmpty(mApkPath))
+        return false;
 
-        if(TextUtils.isEmpty(mPackName))
-            return false;
-        return true;
-    }
+    if(TextUtils.isEmpty(mPackName))
+        return false;
+    return true;
+}
 }

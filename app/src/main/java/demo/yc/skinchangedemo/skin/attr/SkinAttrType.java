@@ -22,7 +22,7 @@ public enum SkinAttrType
         @Override
         public void apply(View view, String mResName)
         {
-            if(view instanceof Toolbar)
+            if(view instanceof Toolbar )
             {
                 ColorStateList list = SkinManager.getInstance().getColorBySkinPlugin(mResName);
                 if(list != null)
